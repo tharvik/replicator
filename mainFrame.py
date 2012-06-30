@@ -180,7 +180,7 @@ class mainFrame (wx.Frame) :
         dialog = wx.FileDialog (self,
                                 message     = "Enregistrer l'image",
                                 defaultDir  = self.defaultDirectory,
-                                defaultFile = "Replicator - ", ##! Add curent state
+                                defaultFile = "Replicator -", self.canvas.actualIteration, "iteration"
                                 wildcard    = wildcard,
                                 style       = wx.OPEN | wx.CHANGE_DIR
                                 )
@@ -202,11 +202,11 @@ class mainFrame (wx.Frame) :
         
         about = wx.AboutDialogInfo()
         about.Name = "Replicator"
-        about.Version = "0.0.0"
+        about.Version = "0.0.1"
         about.Description = "\"Replicator\" is a python script to replicate"\
-                            "an image following the \"oaskdooas\" theorem"\
-                            "and to improve my python's writing."
-        about.Developers = [ "Valérian Rousset" ]
+                            "an image following some kind of biological"\
+                            "algorithm and to improve my python's writing."
+        about.Developers = [ "Kéwan Marconnet (tharvik)" ]
 
         wx.AboutBox (about)
         
@@ -224,6 +224,7 @@ class mainFrame (wx.Frame) :
             self.canvas.goTo (value)
 
         elif name == "progression" :
+            ##! Add support for a working increment
             self.iterationCtrl.SetValue (iteration + value)
             self.iterationCtrl.Command  (wx.CommandEvent ())
             
